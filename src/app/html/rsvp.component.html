@@ -1,0 +1,69 @@
+<div id="fh5co-started" class="fh5co-bg" style="background-image:url(../../assets/images/img_bg_4.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Are You Attending?</h2>
+                <p>Please fill-in the form to notify us that you're attending. Thanks.</p>
+            </div>
+        </div>
+        <div class="row animate-box">
+            <div class="row col-md-10 col-md-offset-1" *ngIf="submitted">
+                <h4 style="color: white">Thanks {{guest.firstName}} {{guest.lastName}}! You have successfully submitted your RSVP</h4>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                <form class="form-inline" (ngSubmit)="addGuest()" #rsvpForm="ngForm">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="firstName" class="sr-only">Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="guest.firstName" name="firstName" id="firstName" placeholder="First Name" required #firstName>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName" class="sr-only">Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="guest.lastName" name="lastName" id="lastName" placeholder="Last Name" required #lastName>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" [(ngModel)]="guest.email" name="email" id="email" placeholder="Email" #email>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="event" class="sr-only">Attending</label>
+                                <select class="form-control" [(ngModel)]="guest.eventType" name="event" id="event" required #event>
+                                    <option value="" disabled>Attending...</option>
+                                    <option value="Ceremony">Ceremony</option>
+                                    <option value="Ceremony and Reception">Ceremony and Reception</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="guests" class="sr-only">Guests</label>
+                                <input type="number" min="1" max="15" class="form-control" [(ngModel)]="guest.numberOfGuests" name="guests" id="guests" placeholder="Guests (including yourself)" required #guests>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="dietaryRestrictions" class="sr-only">Dietary</label>
+                                <input type="text" class="form-control" name="dietaryRestrictions" [(ngModel)]="guest.dietaryRestriction" id="dietaryRestrictions" placeholder="Dietary Restrictions (optional)" #dietary>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 pull-right">
+                            <button type="submit" class="btn btn-default btn-block" [disabled]="!rsvpForm.form.valid">I am Attending</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
