@@ -1,14 +1,14 @@
-<div class="simply-countdown simply-countdown-one" *ngIf="seconds">
-  <div class="simply-section simply-days-section">
-    <div><span class="simply-amount">{{days}}</span><span class="simply-word">Days</span></div>
+<div class="simply-countdown simply-countdown-one">
+  <div class="simply-section simply-days-section" *ngIf="days">
+    <div><span class="simply-amount">{{days}}</span><span class="simply-word">Day<span *ngIf="days > 1">s</span></span></div>
   </div>
-  <div class="simply-section simply-hours-section">
-    <div><span class="simply-amount">{{hours}}</span><span class="simply-word">Hours</span></div>
+  <div class="simply-section simply-hours-section" *ngIf="hours">
+    <div><span class="simply-amount">{{hours}}</span><span class="simply-word">Hour<span *ngIf="hours > 1">s</span></span></div>
   </div>
-  <div class="simply-section simply-minutes-section">
-    <div><span class="simply-amount">{{minutes}}</span><span class="simply-word">Minutes</span></div>
+  <div class="simply-section simply-minutes-section" *ngIf="minutes">
+    <div><span class="simply-amount">{{minutes}}</span><span class="simply-word">Minute<span *ngIf="minutes > 1">s</span></span></div>
   </div>
-  <div class="simply-section simply-seconds-section">
-    <div><span class="simply-amount">{{seconds}}</span><span class="simply-word">Seconds</span></div>
+  <div class="simply-section simply-seconds-section" *ngIf="seconds">
+    <div><span class="simply-amount">{{seconds}}</span><span class="simply-word">Second<span *ngIf="seconds > 1">s</span></span></div>
   </div>
 </div>

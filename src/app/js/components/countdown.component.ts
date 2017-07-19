@@ -12,21 +12,16 @@ export class CountdownComponent implements OnInit, OnDestroy {
     private diff: number;
     private $counter: Observable<number>;
     private subscription: Subscription;
-    private message: string;
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
+    days = 0;
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
 
     constructor(elm: ElementRef) {
         this.futureString = elm.nativeElement.getAttribute('inputDate');
     }
 
     dhms(t: number) {
-        const days = 0,
-          hours = 0,
-          minutes = 0,
-          seconds = 0;
         this.days = Math.floor(t / 86400);
         t -= this.days * 86400;
         this.hours = Math.floor(t / 3600) % 24;
@@ -34,13 +29,6 @@ export class CountdownComponent implements OnInit, OnDestroy {
         this.minutes = Math.floor(t / 60) % 60;
         t -= this.minutes * 60;
         this.seconds = t % 60;
-
-        return [
-            days + 'd',
-            hours + 'h',
-            minutes + 'm',
-            seconds + 's'
-        ].join(' ');
     }
 
 
@@ -51,7 +39,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
             return x;
         });
 
-        this.subscription = this.$counter.subscribe((x) => this.message = this.dhms(this.diff));
+        this.subscription = this.$counter.subscribe((x) => this.dhms(this.diff));
     }
 
     ngOnDestroy(): void {
