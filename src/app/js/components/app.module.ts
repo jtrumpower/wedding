@@ -14,7 +14,7 @@ import {GuestsComponent} from './guests.component';
 import {GuestService} from './guest.service';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroSearchComponent} from './hero-search.component';
-import {HeroesComponent} from './heroes.component'; // <-- NgModel lives here
+import {HeroesComponent} from './heroes.component';
 
 
 
@@ -36,7 +36,8 @@ import {HeroesComponent} from './heroes.component'; // <-- NgModel lives here
     GuestsComponent,
     HeroDetailComponent,
     HeroSearchComponent,
-    HeroesComponent],
+    HeroesComponent
+  ],
   bootstrap:    [ AppComponent ],
   providers: [
     GuestService

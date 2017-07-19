@@ -3,20 +3,7 @@ import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 
 @Component({
     selector: 'app-countdown-component',
-    template: `
-        <div>
-            {{days}} Days
-        </div>
-        <div>
-            {{hours}} Hours
-        </div>
-        <div>
-            {{minutes}} Minutes
-        </div>
-        <div>
-            {{seconds}} Seconds
-        </div>
-    `
+    templateUrl: '../../html/countdown.component.html'
 })
 export class CountdownComponent implements OnInit, OnDestroy {
 

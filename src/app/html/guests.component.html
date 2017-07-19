@@ -1,25 +1,47 @@
 <header id="fh5co-event" class="fh5co-cover" role="banner" style="color: white" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
-        <div class="row col-md-12">
-            <table>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Event</th>
-                    <th>Number of Guests</th>
-                    <th>Dietary Restrictions</th>
-                </tr>
-                <tr *ngFor="let guest of guests">
-                    <td>{{ guest.firstName }}</td>
-                    <td>{{ guest.lastName }}</td>
-                    <td *ngIf="guest.email">{{ guest.email }}</td>
-                    <td>{{ guest.eventType }}</td>
-                    <td>{{ guest.numberOfGuests }}</td>
-                    <td *ngIf="guest.dietaryRestriction">{{ guest.dietaryRestriction }}</td>
-                </tr>
-            </table>
+        <div class="row col-md-12 guest-table">
+            <div class="row">
+              <div class="col-md-2 guest-header-col">
+                First Name
+              </div>
+              <div class="col-md-2 guest-header-col">
+                Last Name
+              </div>
+              <div class="col-md-3 guest-header-col">
+                Email
+              </div>
+              <div class="col-md-2 guest-header-col">
+                Event
+              </div>
+              <div class="col-md-1 guest-header-col">
+                Guests
+              </div>
+              <div class="col-md-2 guest-header-col">
+                Dietary Restrictions
+              </div>
+            </div>
+            <div class="row" *ngFor="let guest of guests">
+              <div class="col-md-2 guest-col">
+                {{ guest.firstName }}
+              </div>
+              <div class="col-md-2 guest-col">
+                {{ guest.lastName }}
+              </div>
+              <div class="col-md-3 guest-col">
+                {{ guest.email }}
+              </div>
+              <div class="col-md-2 guest-col">
+                {{ guest.eventType }}
+              </div>
+              <div class="col-md-1 guest-col">
+                {{ guest.numberOfGuests }}
+              </div>
+              <div class="col-md-2 guest-col">
+                {{ guest.dietaryRestriction }}
+              </div>
+            </div>
         </div>
     </div>
 </header>
