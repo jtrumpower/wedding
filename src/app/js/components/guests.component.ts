@@ -16,9 +16,9 @@ export class GuestsComponent {
     { prop: 'firstName', name: 'First Name', flexGrow: 1 },
     { prop: 'lastName', name: 'Last Name', flexGrow: 1 },
     { prop: 'email', name: 'Email', flexGrow: 2 },
-    { prop: 'eventType', name: 'Event Type', flexGrow: 2 },
+    { prop: 'eventType', name: 'Event Type', flexGrow: 1.4 },
     { prop: 'numberOfGuests', name: 'Guests', flexGrow: 0.5 },
-    { prop: 'dietaryRestriction', name: 'Dietary Restriction', flexGrow: 1 }
+    { prop: 'dietaryRestriction', name: 'Dietary Restriction', flexGrow: 1.05 }
   ];
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
