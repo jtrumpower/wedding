@@ -8,7 +8,8 @@ import {GuestService} from './guest.service';
 
 @Component({
     selector: 'app-rsvp-component',
-    templateUrl: '../../html/rsvp.component.html'
+    templateUrl: '../../html/rsvp.component.html',
+    styleUrls: ['../../css/rsvp.component.css']
 })
 export class RSVPComponent {
     guest: Guest = new Guest();
