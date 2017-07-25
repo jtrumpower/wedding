@@ -1,0 +1,18 @@
+<div id="fh5co-started" class="fh5co-bg" style="background-image:url(../../assets/images/img_bg_1.jpg);">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row col-md-12">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng" title="Malone University">
+          <agm-info-window isOpen="true">
+            <h4>Malone University</h4>
+            <p>
+              2600 Cleveland Avenue Northwest<br>
+              Canton, OH 44709
+            </p>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

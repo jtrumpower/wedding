@@ -5,12 +5,14 @@ import { HomeComponent} from './home.component';
 import {RSVPComponent} from './rsvp.component';
 import {ScheduleComponent} from './schedule.component';
 import {GuestsComponent} from './guests.component';
+import {DirectionsComponent} from './directions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
   { path: 'rsvp', component: RSVPComponent },
   { path: 'schedule',     component: ScheduleComponent },
+  { path: 'directions', component: DirectionsComponent },
   { path: 'guests',     component: GuestsComponent }
 ];
 

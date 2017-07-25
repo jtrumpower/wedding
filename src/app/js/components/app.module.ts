@@ -16,6 +16,8 @@ import {HeroDetailComponent} from './hero-detail.component';
 import {HeroSearchComponent} from './hero-search.component';
 import {HeroesComponent} from './heroes.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AgmCoreModule } from '@agm/core';
+import {DirectionsComponent} from './directions.component';
 
 
 
@@ -26,7 +28,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgxDatatableModule,
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDdzsjwpsrRgwp5aHNEUB7gMwZ6MYSbwo0'
+    })
   ],
   declarations: [
     AppComponent,
@@ -39,7 +44,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     GuestsComponent,
     HeroDetailComponent,
     HeroSearchComponent,
-    HeroesComponent
+    HeroesComponent,
+    DirectionsComponent
   ],
   bootstrap:    [ AppComponent ],
   providers: [
