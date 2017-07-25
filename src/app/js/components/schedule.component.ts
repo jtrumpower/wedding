@@ -7,6 +7,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'app-my-app',
     templateUrl: '../../html/schedule.component.html',
+    styleUrls: ['../../css/schedule.component.css']
 })
 export class ScheduleComponent {
 
