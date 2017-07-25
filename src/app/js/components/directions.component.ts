@@ -15,4 +15,7 @@ export class DirectionsComponent {
   lat = 40.827023;
   lng = -81.378202;
   zoom = 14;
+  address = `2600 Cleveland Avenue Northwest<br>
+  Canton, OH 44709`;
+  location = 'Malone University';
 }

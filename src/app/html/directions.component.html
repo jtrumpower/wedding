@@ -3,13 +3,10 @@
   <div class="container">
     <div class="row col-md-12">
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-        <agm-marker [latitude]="lat" [longitude]="lng" title="Malone University">
-          <agm-info-window isOpen="true">
-            <h4>Malone University</h4>
-            <p>
-              2600 Cleveland Avenue Northwest<br>
-              Canton, OH 44709
-            </p>
+        <agm-marker [latitude]="lat" [longitude]="lng">
+          <agm-info-window [isOpen]="true">
+            <h4>{{location}}</h4>
+            <p [innerHTML]="address"></p>
           </agm-info-window>
         </agm-marker>
       </agm-map>
