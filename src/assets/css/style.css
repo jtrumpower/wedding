@@ -362,7 +362,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-counter .display-tc,
 #fh5co-event .display-t,
 #fh5co-event .display-tc {
-    height: 700px;
+    /*height: 700px;*/
     display: table;
     width: 100%;
 }
@@ -411,6 +411,7 @@ h1, h2, h3, h4, h5, h6, figure {
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     border-radius: 4px;
+    margin-bottom: 30px;
 }
 @media screen and (max-width: 768px) {
     #fh5co-counter .event-wrap,
@@ -1001,7 +1002,7 @@ form label {
 .fh5co-section {
     padding: 7em 0;
     clear: both;
-    height: 850px;
+    height: auto;
 }
 @media screen and (max-width: 768px) {
     #fh5co-testimonial,
