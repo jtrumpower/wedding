@@ -18,6 +18,7 @@ import {HeroesComponent} from './heroes.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AgmCoreModule } from '@agm/core';
 import {DirectionsComponent} from './directions.component';
+import {AlreadyRegisteredComponent} from './already-registered.component';
 
 
 
@@ -45,7 +46,8 @@ import {DirectionsComponent} from './directions.component';
     HeroDetailComponent,
     HeroSearchComponent,
     HeroesComponent,
-    DirectionsComponent
+    DirectionsComponent,
+    AlreadyRegisteredComponent
   ],
   bootstrap:    [ AppComponent ],
   providers: [

@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
 import {Guest} from './Guest';
 import {GuestService} from './guest.service';
-/**
- * Created by jtrumpower on 7/10/17.
- */
 
 
 @Component({

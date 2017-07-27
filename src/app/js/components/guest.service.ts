@@ -47,6 +47,21 @@ export class GuestService {
             .catch(this.handleError);
     }
 
+    checkStatus(guest: Guest): Promise<string> {
+        const url = `${this.guestsUrl}/status`;
+        return this.http
+          .post(url, JSON.stringify({
+            firstName: guest.firstName,
+            lastName: guest.lastName
+          }), {headers: this.headers})
+          .toPromise()
+          .then((res: any) => {
+            console.log(res);
+            return res._body;
+          })
+          .catch(this.handleError);
+    }
+
     create(guest: Guest): Promise<Guest> {
         return this.http
             .post(this.guestsUrl, JSON.stringify({
