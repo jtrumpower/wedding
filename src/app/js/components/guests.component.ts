@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Guest} from './Guest';
 import {GuestService} from './guest.service';
 import {DatatableComponent} from '@swimlane/ngx-datatable';
@@ -9,18 +9,13 @@ import {DatatableComponent} from '@swimlane/ngx-datatable';
     templateUrl: '../../html/guests.component.html',
     styleUrls: ['../../css/guests.component.css']
 })
-export class GuestsComponent {
+export class GuestsComponent implements OnInit {
+  @ViewChild(DatatableComponent) table: DatatableComponent;
+  @ViewChild('editTmpl') editTmpl: TemplateRef<any>;
   guests: Guest[];
   temp: Guest[];
-  columns = [
-    { prop: 'firstName', name: 'First Name', flexGrow: 1 },
-    { prop: 'lastName', name: 'Last Name', flexGrow: 1 },
-    { prop: 'email', name: 'Email', flexGrow: 2 },
-    { prop: 'eventType', name: 'Event Type', flexGrow: 1.4 },
-    { prop: 'numberOfGuests', name: 'Guests', flexGrow: 0.5 },
-    { prop: 'dietaryRestriction', name: 'Dietary Restriction', flexGrow: 1.05 }
-  ];
-  @ViewChild(DatatableComponent) table: DatatableComponent;
+  columns = [];
+  loadingIndicator = true;
 
   constructor(private rsvpService: GuestService) {
       this.getAllGuests();
@@ -31,7 +26,20 @@ export class GuestsComponent {
           .then(guests => {
               this.guests = guests;
               this.temp = guests;
+              this.loadingIndicator = false;
           });
+  }
+
+  ngOnInit() {
+    this.columns = [
+      { prop: 'firstName', name: 'First Name', flexGrow: 1 },
+      { prop: 'lastName', name: 'Last Name', flexGrow: 1 },
+      { prop: 'email', name: 'Email', flexGrow: 1.6 },
+      { prop: 'eventType', name: 'Event Type', flexGrow: 1.4 },
+      { prop: 'numberOfGuests', name: 'Guests', flexGrow: 0.6 },
+      { prop: 'dietaryRestriction', name: 'Dietary Restriction', flexGrow: 1.2 },
+      { prop: 'attending', name: 'A', flexGrow: 0.3, cellTemplate: this.editTmpl }
+    ];
   }
 
   updateFilter(event) {

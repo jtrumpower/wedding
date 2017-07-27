@@ -9,7 +9,19 @@
           (keyup)='updateFilter($event)'
         />
 
-        <ngx-datatable #table columnMode="flex" [rows]="guests" [columns]="columns" class="material"></ngx-datatable>
+        <ngx-datatable
+          #table [columnMode]="'flex'"
+          [rows]="guests"
+          [columns]="columns"
+          [footerHeight]="40"
+          [limit]="15"
+          [loadingIndicator]="loadingIndicator"
+          class="material">
+        </ngx-datatable>
+
+        <ng-template #editTmpl let-row="row" let-value="value">
+          <input type="checkbox" [checked]="value" />
+        </ng-template>
       </div>
     </div>
 </header>
