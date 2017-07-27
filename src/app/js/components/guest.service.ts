@@ -5,7 +5,7 @@ import {Guest} from './Guest';
 
 @Injectable()
 export class GuestService {
-    private guestsUrl = 'http://localhost:8084/wedding-service/guests';  // URL to web api
+    private guestsUrl = 'http://jtrumpower.com:8080/wedding-service/guests';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
