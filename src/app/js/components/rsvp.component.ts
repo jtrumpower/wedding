@@ -19,7 +19,9 @@ export class RSVPComponent {
 
     }
 
-    addGuest() {
+    addGuest($event, attending) {
+        $event.preventDefault();
+        this.guest.attending = attending
         this.rsvpService.create(this.guest).then(guest => {
             this.submitted = true;
         });

@@ -39,7 +39,8 @@ export class GuestService {
                 email: guest.email,
                 eventType: guest.eventType,
                 numberOfGuests: guest.numberOfGuests,
-                dietaryRestriction: guest.dietaryRestriction
+                dietaryRestriction: guest.dietaryRestriction,
+                attending: guest.attending
             }), {headers: this.headers})
             .toPromise()
             .then(() => guest)
@@ -54,7 +55,8 @@ export class GuestService {
                 email: guest.email,
                 eventType: guest.eventType,
                 numberOfGuests: guest.numberOfGuests,
-                dietaryRestriction: guest.dietaryRestriction
+                dietaryRestriction: guest.dietaryRestriction,
+                attending: guest.attending
             }), {headers: this.headers})
             .toPromise()
             .then((res) => {

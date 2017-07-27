@@ -9,4 +9,5 @@ export class Guest {
     eventType = '';
     numberOfGuests: number;
     dietaryRestriction: string;
+    attending: boolean;
 }
