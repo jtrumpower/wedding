@@ -9,3 +9,8 @@ select option {
 .already-registered {
   color: white;
 }
+@media screen and (max-width: 768px) {
+  .message {
+    margin: 0;
+  }
+}

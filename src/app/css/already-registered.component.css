@@ -1,3 +1,10 @@
 #fh5co-started.fh5co-bg {
   min-height: 100vh;
 }
+
+
+@media screen and (max-width: 768px) {
+  .message {
+    margin-left: 0;
+  }
+}
