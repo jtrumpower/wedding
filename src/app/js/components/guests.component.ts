@@ -18,6 +18,7 @@ export class GuestsComponent implements OnInit {
   @ViewChild('guestsTmpl') guestsTmpl: TemplateRef<any>;
   @ViewChild('dietaryRestrictionTmpl') dietaryRestrictionTmpl: TemplateRef<any>;
   @ViewChild('attendingTmpl') attendingTmpl: TemplateRef<any>;
+  @ViewChild('deleteTmpl') deleteTmpl: TemplateRef<any>;
   guests: Guest[];
   temp: Guest[];
   columns = [];
@@ -45,7 +46,8 @@ export class GuestsComponent implements OnInit {
       { prop: 'eventType', name: 'Event Type', flexGrow: 1.4, cellTemplate: this.eventTypeTmpl },
       { prop: 'numberOfGuests', name: 'Guests', flexGrow: 0.6, cellTemplate: this.guestsTmpl },
       { prop: 'dietaryRestriction', name: 'Dietary Restriction', flexGrow: 1.2, cellTemplate: this.dietaryRestrictionTmpl },
-      { prop: 'attending', name: 'A', flexGrow: 0.3, cellTemplate: this.attendingTmpl }
+      { prop: 'attending', name: 'A', flexGrow: 0.3, cellTemplate: this.attendingTmpl },
+      { name: '', flexGrow: 0.3, cellTemplate: this.deleteTmpl }
     ];
   }
 
@@ -83,6 +85,19 @@ export class GuestsComponent implements OnInit {
         this.guests[row.$$index][cell] = $($event.target).is(':checked');
       } else {
         this.guests[row.$$index][cell] = $event.target.value;
+      }
+    });
+  }
+
+  deleteRow(row) {
+    this.rsvpService.delete(row).then(() => {
+      console.log(row.id + ' deleted');
+      for (let i = 0; i < this.guests.length; i++) {
+        const guest = this.guests[i];
+        if (guest.id === row.id) {
+          this.guests.splice(i, 1);
+          break;
+        }
       }
     });
   }

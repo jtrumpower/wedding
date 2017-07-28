@@ -13,7 +13,8 @@
           #table [columnMode]="'flex'"
           [rows]="guests"
           [columns]="columns"
-          [footerHeight]="40"
+          [rowHeight]="40"
+          [footerHeight]="35"
           [limit]="15"
           [loadingIndicator]="loadingIndicator"
           class="material">
@@ -117,6 +118,10 @@
 
         <ng-template #attendingTmpl let-row="row" let-value="value">
           <input type="checkbox" [checked]="value" (click)="updateValue($event, 'attending', row)" />
+        </ng-template>
+
+        <ng-template #deleteTmpl let-row="row" let-value="value">
+          <input type="button" value="X" (click)="deleteRow(row)" />
         </ng-template>
       </div>
     </div>
