@@ -5,7 +5,7 @@ import {Guest} from './Guest';
 
 @Injectable()
 export class GuestService {
-    private guestsUrl = 'http://jtrumpower.com:8080/wedding-service/guests';  // URL to web api
+    private guestsUrl = 'http://l-jtrumpower.com/wedding-service/guests';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
@@ -31,19 +31,12 @@ export class GuestService {
     }
 
     update(guest: Guest): Promise<Guest> {
-        const url = `${this.guestsUrl}/${guest.id}`;
         return this.http
-            .put(url, JSON.stringify({
-                firstName: guest.firstName,
-                lastName: guest.lastName,
-                email: guest.email,
-                eventType: guest.eventType,
-                numberOfGuests: guest.numberOfGuests,
-                dietaryRestriction: guest.dietaryRestriction,
-                attending: guest.attending
-            }), {headers: this.headers})
+            .put(this.guestsUrl, JSON.stringify(guest), {headers: this.headers})
             .toPromise()
-            .then(() => guest)
+            .then((res) => {
+              return res.json() as Guest;
+            })
             .catch(this.handleError);
     }
 
@@ -64,15 +57,7 @@ export class GuestService {
 
     create(guest: Guest): Promise<Guest> {
         return this.http
-            .post(this.guestsUrl, JSON.stringify({
-                firstName: guest.firstName,
-                lastName: guest.lastName,
-                email: guest.email,
-                eventType: guest.eventType,
-                numberOfGuests: guest.numberOfGuests,
-                dietaryRestriction: guest.dietaryRestriction,
-                attending: guest.attending
-            }), {headers: this.headers})
+            .post(this.guestsUrl, JSON.stringify(guest), {headers: this.headers})
             .toPromise()
             .then((res) => {
                 guest = res.json() as Guest;
@@ -82,8 +67,8 @@ export class GuestService {
             .catch(this.handleError);
     }
 
-    delete(id: number): Promise<void> {
-        const url = `${this.guestsUrl}/${id}`;
+    delete(guest: Guest): Promise<void> {
+        const url = `${this.guestsUrl}/${guest.id}`;
         return this.http.delete(url, {headers: this.headers})
             .toPromise()
             .then(() => null)

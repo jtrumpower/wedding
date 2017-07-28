@@ -19,8 +19,104 @@
           class="material">
         </ngx-datatable>
 
-        <ng-template #editTmpl let-row="row" let-value="value">
-          <input type="checkbox" [checked]="value" />
+        <ng-template #firstNameTmpl let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[row.$$index + '-firstName'] = true"
+              *ngIf="!editing[row.$$index + '-firstName']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'firstName', row)"
+            *ngIf="editing[row.$$index + '-firstName']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+
+        <ng-template #lastNameTmpl let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[row.$$index + '-lastName'] = true"
+              *ngIf="!editing[row.$$index + '-lastName']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'lastName', row)"
+            *ngIf="editing[row.$$index + '-lastName']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+
+        <ng-template #emailTmpl let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[row.$$index + '-email'] = true"
+              *ngIf="!editing[row.$$index + '-email']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'email', row)"
+            *ngIf="editing[row.$$index + '-email']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+
+        <ng-template #eventTypeTmpl let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[row.$$index + '-eventType'] = true"
+              *ngIf="!editing[row.$$index + '-eventType']">
+              {{value}}
+            </span>
+            <select
+              *ngIf="editing[row.$$index + '-eventType']"
+              (change)="updateValue($event, 'eventType', row)"
+              [value]="value">
+              <option value="Ceremony">Ceremony</option>
+              <option value="Ceremony and Reception">Ceremony and Reception</option>
+            </select>
+        </ng-template>
+
+        <ng-template #guestsTmpl let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[row.$$index + '-numberOfGuests'] = true"
+              *ngIf="!editing[row.$$index + '-numberOfGuests']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'numberOfGuests', row)"
+            *ngIf="editing[row.$$index + '-numberOfGuests']"
+            type="number"
+            [value]="value"
+          />
+        </ng-template>
+
+        <ng-template #dietaryRestrictionTmpl let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[row.$$index + '-dietaryRestriction'] = true"
+              *ngIf="!editing[row.$$index + '-dietaryRestriction']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'dietaryRestriction', row)"
+            *ngIf="editing[row.$$index + '-dietaryRestriction']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+
+        <ng-template #attendingTmpl let-row="row" let-value="value">
+          <input type="checkbox" [checked]="value" (click)="updateValue($event, 'attending', row)" />
         </ng-template>
       </div>
     </div>

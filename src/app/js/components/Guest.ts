@@ -8,6 +8,6 @@ export class Guest {
     email: string;
     eventType = '';
     numberOfGuests: number;
-    dietaryRestriction: string;
+    dietaryRestriction: string = null;
     attending: boolean;
 }
