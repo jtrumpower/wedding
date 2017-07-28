@@ -1004,7 +1004,7 @@ form label {
     clear: both;
     height: auto;
 }
-@media screen and (max-width: 768px) {
+/*@media screen and (max-width: 768px) {
     #fh5co-testimonial,
     #fh5co-services,
     #fh5co-started,
@@ -1016,7 +1016,7 @@ form label {
     .fh5co-section {
         padding: 3em 0;
     }
-}
+}*/
 
 .fh5co-section-gray {
     background: rgba(0, 0, 0, 0.04);

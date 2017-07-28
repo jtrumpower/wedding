@@ -3,5 +3,5 @@ header {
 }
 
 #fh5co-event.fh5co-cover {
-  height: auto;
+  min-height: 100vh;
 }
