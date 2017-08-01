@@ -24,6 +24,7 @@ export class GuestsComponent implements OnInit {
   columns = [];
   editing = {};
   loadingIndicator = true;
+  numberOfGuests = 0;
 
   constructor(private rsvpService: GuestService) {
       this.getAllGuests();
@@ -35,6 +36,7 @@ export class GuestsComponent implements OnInit {
               this.guests = guests;
               this.temp = guests;
               this.loadingIndicator = false;
+              this.numberOfGuests = this.calculateNumberOfGuests();
           });
   }
 
@@ -74,31 +76,46 @@ export class GuestsComponent implements OnInit {
   }
 
   updateValue($event, cell, row) {
-    this.editing[row.$$index + '-' + cell] = false;
-    if ($($event.target).is('input[type=checkbox]')) {
-      row[cell] = $($event.target).is(':checked');
-    } else {
-      row[cell] = $event.target.value;
-    }
-    this.rsvpService.update(row).then(() => {
+    if (!this.loadingIndicator) {
+      this.loadingIndicator = true;
+      this.editing[row.$$index + '-' + cell] = false;
       if ($($event.target).is('input[type=checkbox]')) {
-        this.guests[row.$$index][cell] = $($event.target).is(':checked');
+        row[cell] = $($event.target).is(':checked');
       } else {
-        this.guests[row.$$index][cell] = $event.target.value;
+        row[cell] = $event.target.value;
       }
-    });
+      this.rsvpService.update(row).then(() => {
+        if ($($event.target).is('input[type=checkbox]')) {
+          this.guests[row.$$index][cell] = $($event.target).is(':checked');
+        } else {
+          this.guests[row.$$index][cell] = $event.target.value;
+        }
+        this.numberOfGuests = this.calculateNumberOfGuests();
+        this.loadingIndicator = false;
+      });
+    }
   }
 
   deleteRow(row) {
     this.rsvpService.delete(row).then(() => {
-      console.log(row.id + ' deleted');
       for (let i = 0; i < this.guests.length; i++) {
         const guest = this.guests[i];
         if (guest.id === row.id) {
           this.guests.splice(i, 1);
+          this.numberOfGuests = this.calculateNumberOfGuests();
           break;
         }
       }
     });
+  }
+
+  private calculateNumberOfGuests() {
+    let numberOfGuests = 0;
+    if (this.guests) {
+      for (const obj of this.guests) {
+        numberOfGuests += obj.numberOfGuests;
+      }
+    }
+    return numberOfGuests;
   }
 }

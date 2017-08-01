@@ -18,6 +18,19 @@
           [limit]="15"
           [loadingIndicator]="loadingIndicator"
           class="material">
+          <ngx-datatable-footer>
+            <ng-template
+              ngx-datatable-footer-template
+              let-rowCount="rowCount"
+              let-pageSize="pageSize"
+              let-selectedCount="selectedCount"
+              let-curPage="curPage"
+              let-offset="offset">
+              <div style="padding: 5px 10px;">
+                Rows: {{rowCount}} | Guests: {{ numberOfGuests }}
+              </div>
+            </ng-template>
+          </ngx-datatable-footer>
         </ngx-datatable>
 
         <ng-template #firstNameTmpl let-value="value" let-row="row">
@@ -30,6 +43,7 @@
           <input
             autofocus
             (blur)="updateValue($event, 'firstName', row)"
+            (keyup.enter)="updateValue($event, 'firstName', row)"
             *ngIf="editing[row.$$index + '-firstName']"
             type="text"
             [value]="value"
@@ -46,6 +60,7 @@
           <input
             autofocus
             (blur)="updateValue($event, 'lastName', row)"
+            (keyup.enter)="updateValue($event, 'lastName', row)"
             *ngIf="editing[row.$$index + '-lastName']"
             type="text"
             [value]="value"
@@ -62,6 +77,7 @@
           <input
             autofocus
             (blur)="updateValue($event, 'email', row)"
+            (keyup.enter)="updateValue($event, 'email', row)"
             *ngIf="editing[row.$$index + '-email']"
             type="text"
             [value]="value"
@@ -94,6 +110,7 @@
           <input
             autofocus
             (blur)="updateValue($event, 'numberOfGuests', row)"
+            (keyup.enter)="updateValue($event, 'numberOfGuests', row)"
             *ngIf="editing[row.$$index + '-numberOfGuests']"
             type="number"
             [value]="value"
@@ -110,6 +127,7 @@
           <input
             autofocus
             (blur)="updateValue($event, 'dietaryRestriction', row)"
+            (keyup.enter)="updateValue($event, 'dietaryRestriction', row)"
             *ngIf="editing[row.$$index + '-dietaryRestriction']"
             type="text"
             [value]="value"
