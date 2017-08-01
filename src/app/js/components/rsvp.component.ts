@@ -18,7 +18,7 @@ export class RSVPComponent {
 
     addGuest($event, attending) {
         $event.preventDefault();
-        if(this.guest.dietaryRestriction === '') {
+        if (!this.guest.dietaryRestriction || this.guest.dietaryRestriction === '') {
           this.guest.dietaryRestriction = 'None';
         }
         this.guest.attending = attending;
