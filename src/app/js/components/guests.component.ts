@@ -24,7 +24,8 @@ export class GuestsComponent implements OnInit {
   columns = [];
   editing = {};
   loadingIndicator = true;
-  numberOfGuests = 0;
+  attending = 0;
+  notAttending = 0;
 
   constructor(private rsvpService: GuestService) {
       this.getAllGuests();
@@ -36,7 +37,7 @@ export class GuestsComponent implements OnInit {
               this.guests = guests;
               this.temp = guests;
               this.loadingIndicator = false;
-              this.numberOfGuests = this.calculateNumberOfGuests();
+              this.calculateNumberOfGuests();
           });
   }
 
@@ -63,7 +64,9 @@ export class GuestsComponent implements OnInit {
           (d.firstName && d.email.toLowerCase().indexOf(val) !== -1) ||
           d.eventType.toLowerCase().indexOf(val) !== -1 ||
           d.numberOfGuests === +val ||
-          (d.dietaryRestriction && d.dietaryRestriction.toLowerCase().indexOf(val) !== -1)) {
+          (d.dietaryRestriction && d.dietaryRestriction.toLowerCase().indexOf(val) !== -1) ||
+          val.toLowerCase().startsWith('attending') && d.attending ||
+          val.toLowerCase().startsWith('not attending') && !d.attending) {
         return true;
       }
       return !val;
@@ -73,6 +76,7 @@ export class GuestsComponent implements OnInit {
     this.guests = temp;
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
+    this.calculateNumberOfGuests();
   }
 
   updateValue($event, cell, row) {
@@ -90,7 +94,7 @@ export class GuestsComponent implements OnInit {
         } else {
           this.guests[row.$$index][cell] = $event.target.value;
         }
-        this.numberOfGuests = this.calculateNumberOfGuests();
+        this.calculateNumberOfGuests();
         this.loadingIndicator = false;
       });
     }
@@ -102,7 +106,7 @@ export class GuestsComponent implements OnInit {
         const guest = this.guests[i];
         if (guest.id === row.id) {
           this.guests.splice(i, 1);
-          this.numberOfGuests = this.calculateNumberOfGuests();
+          this.calculateNumberOfGuests();
           break;
         }
       }
@@ -110,12 +114,18 @@ export class GuestsComponent implements OnInit {
   }
 
   private calculateNumberOfGuests() {
-    let numberOfGuests = 0;
+    let attending = 0;
+    let notAttending = 0;
     if (this.guests) {
       for (const obj of this.guests) {
-        numberOfGuests += obj.numberOfGuests;
+        if (obj.attending) {
+          attending += obj.numberOfGuests;
+        } else {
+          notAttending = obj.numberOfGuests;
+        }
       }
     }
-    return numberOfGuests;
+    this.attending = attending;
+    this.notAttending = notAttending;
   }
 }

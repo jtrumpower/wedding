@@ -5,7 +5,7 @@
         <input
           type='text'
           style='padding:8px;margin:15px auto;width:30%;'
-          placeholder='Type to filter the name column...'
+          placeholder='Type to filter the table...'
           (keyup)='updateFilter($event)'
         />
 
@@ -27,7 +27,7 @@
               let-curPage="curPage"
               let-offset="offset">
               <div style="padding: 5px 10px;">
-                Rows: {{rowCount}} | Guests: {{ numberOfGuests }}
+                Rows: {{rowCount}} | Attending: {{ attending }} | Not Attending: {{ notAttending }}
               </div>
             </ng-template>
           </ngx-datatable-footer>
@@ -109,8 +109,8 @@
             </span>
           <input
             autofocus
-            (blur)="updateValue($event, 'numberOfGuests', row)"
-            (keyup.enter)="updateValue($event, 'numberOfGuests', row)"
+            (blur)="updateValue($event, 'guestsAttending', row)"
+            (keyup.enter)="updateValue($event, 'guestsAttending', row)"
             *ngIf="editing[row.$$index + '-numberOfGuests']"
             type="number"
             [value]="value"
