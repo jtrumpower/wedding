@@ -123,7 +123,7 @@ export class GuestsComponent implements OnInit {
         if (obj.attending) {
           attending += obj.numberOfGuests;
         } else {
-          notAttending = obj.numberOfGuests;
+          notAttending += obj.numberOfGuests;
         }
       }
     }
