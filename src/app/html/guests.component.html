@@ -17,6 +17,7 @@
           [footerHeight]="35"
           [limit]="15"
           [loadingIndicator]="loadingIndicator"
+          [scrollbarH]="true"
           class="material">
           <ngx-datatable-footer>
             <ng-template
@@ -136,6 +137,13 @@
 
         <ng-template #attendingTmpl let-row="row" let-value="value">
           <input type="checkbox" [checked]="value" (click)="updateValue($event, 'attending', row)" />
+        </ng-template>
+
+        <ng-template #hotelTmpl let-row="row" let-value="value">
+          <div class="text-center">
+            <input type="checkbox" [checked]="value" (click)="updateValue($event, 'hotel', row)" />
+          </div>
+
         </ng-template>
 
         <ng-template #deleteTmpl let-row="row" let-value="value">

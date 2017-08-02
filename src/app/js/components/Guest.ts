@@ -10,4 +10,5 @@ export class Guest {
     numberOfGuests: number;
     dietaryRestriction: string = null;
     attending: boolean;
+    hotel: boolean;
 }

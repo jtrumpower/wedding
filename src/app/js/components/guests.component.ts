@@ -18,6 +18,7 @@ export class GuestsComponent implements OnInit {
   @ViewChild('guestsTmpl') guestsTmpl: TemplateRef<any>;
   @ViewChild('dietaryRestrictionTmpl') dietaryRestrictionTmpl: TemplateRef<any>;
   @ViewChild('attendingTmpl') attendingTmpl: TemplateRef<any>;
+  @ViewChild('hotelTmpl') hotelTmpl: TemplateRef<any>;
   @ViewChild('deleteTmpl') deleteTmpl: TemplateRef<any>;
   guests: Guest[];
   temp: Guest[];
@@ -50,6 +51,7 @@ export class GuestsComponent implements OnInit {
       { prop: 'numberOfGuests', name: 'Guests', flexGrow: 0.6, cellTemplate: this.guestsTmpl },
       { prop: 'dietaryRestriction', name: 'Dietary Restriction', flexGrow: 1.2, cellTemplate: this.dietaryRestrictionTmpl },
       { prop: 'attending', name: 'A', flexGrow: 0.3, cellTemplate: this.attendingTmpl },
+      { prop: 'hotel', name: 'Hotel', flexGrow: 0.5, cellTemplate: this.hotelTmpl },
       { name: '', flexGrow: 0.3, cellTemplate: this.deleteTmpl }
     ];
   }
