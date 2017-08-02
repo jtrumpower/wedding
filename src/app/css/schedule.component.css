@@ -15,3 +15,11 @@
 .event-program {
   margin-left: 15px;
 }
+
+.wedding-event {
+  min-height: 265px;
+}
+
+p {
+  margin: 0;
+}
