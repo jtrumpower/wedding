@@ -9,7 +9,7 @@
         </div>
         <div class="row animate-box">
             <div class="row col-md-10 col-md-offset-1 col-sm-offset-1 message" *ngIf="submitted">
-                <h4 style="color: white">Thanks {{guest.firstName}} {{guest.lastName}}! You have successfully submitted your RSVP</h4>
+                <h3 style="color: white">Thanks {{guest.firstName}} {{guest.lastName}}! You have successfully submitted your RSVP</h3>
             </div>
             <div class="col-md-10 col-md-offset-1">
                 <form class="form-inline" (submit)="addGuest($event, true)" #rsvpForm="ngForm">
@@ -59,10 +59,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-4 pull-right">
-                            <button type="submit" class="btn btn-default btn-block" [disabled]="!rsvpForm.form.valid">I am Attending</button>
+                            <button type="submit" class="btn btn-default btn-block" [disabled]="!rsvpForm.form.valid || submitting">I am Attending</button>
                         </div>
                         <div class="col-md-4 col-sm-4 pull-right">
-                            <button type="button" class="btn btn-default btn-block" [disabled]="!rsvpForm.form.valid" (click)="addGuest($event, false)">Not Attending</button>
+                            <button type="button" class="btn btn-default btn-block" [disabled]="!rsvpForm.form.valid || submitting" (click)="addGuest($event, false)">Not Attending</button>
                         </div>
                     </div>
                     <div class="row">

@@ -11,6 +11,7 @@ import {GuestService} from './guest.service';
 export class RSVPComponent {
     guest: Guest = new Guest();
     submitted = false;
+    submitting = false;
 
     constructor(private rsvpService: GuestService) {
 
@@ -18,12 +19,14 @@ export class RSVPComponent {
 
     addGuest($event, attending) {
         $event.preventDefault();
+        this.submitting = true;
         if (!this.guest.dietaryRestriction || this.guest.dietaryRestriction === '') {
           this.guest.dietaryRestriction = 'None';
         }
         this.guest.attending = attending;
         this.rsvpService.create(this.guest).then(guest => {
             this.submitted = true;
+            this.submitting = false;
         });
     }
 }
