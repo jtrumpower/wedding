@@ -17,19 +17,19 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="firstName" class="sr-only">Name</label>
-                                <input type="text" class="form-control" [(ngModel)]="guest.firstName" name="firstName" id="firstName" placeholder="First Name" required #firstName>
+                                <input type="text" class="form-control" [(ngModel)]="guest.firstName" name="firstName" id="firstName" maxlength="50" placeholder="First Name" required #firstName>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="lastName" class="sr-only">Name</label>
-                                <input type="text" class="form-control" [(ngModel)]="guest.lastName" name="lastName" id="lastName" placeholder="Last Name" required #lastName>
+                                <input type="text" class="form-control" [(ngModel)]="guest.lastName" name="lastName" id="lastName" maxlength="50" placeholder="Last Name" required #lastName>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" [(ngModel)]="guest.email" name="email" id="email" placeholder="Email" #email>
+                                <input type="email" class="form-control" [(ngModel)]="guest.email" name="email" id="email" maxlength="100" placeholder="Email" #email>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="dietaryRestrictions" class="sr-only">Dietary</label>
-                                <input type="text" class="form-control" name="dietaryRestrictions" [(ngModel)]="guest.dietaryRestriction" id="dietaryRestrictions" placeholder="Dietary Restrictions (optional)" #dietary>
+                                <input type="text" class="form-control" name="dietaryRestrictions" [(ngModel)]="guest.dietaryRestriction" id="dietaryRestrictions" maxlength="100" placeholder="Dietary Restrictions (optional)" #dietary>
                             </div>
                         </div>
                     </div>
