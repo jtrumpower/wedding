@@ -29,4 +29,8 @@ export class RSVPComponent {
             this.submitting = false;
         });
     }
+
+    onlyNumbers($event) {
+      return /\d+/.test($event.key);
+    }
 }

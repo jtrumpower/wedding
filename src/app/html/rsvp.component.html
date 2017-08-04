@@ -47,7 +47,7 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="form-group">
                                 <label for="guests" class="sr-only">Guests</label>
-                                <input type="number" min="1" max="15" class="form-control" [(ngModel)]="guest.numberOfGuests" name="guests" id="guests" placeholder="Guests (including yourself)" required #guests>
+                                <input type="number"  min="1" max="15" inputmode="numeric" pattern="[0-9]*" class="form-control" [(ngModel)]="guest.numberOfGuests" name="guests" id="guests" placeholder="Guests (including yourself)" (keypress)="onlyNumbers($event)" required #guests>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
