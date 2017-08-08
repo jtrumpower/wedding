@@ -15,7 +15,7 @@
           [columns]="columns"
           [rowHeight]="40"
           [footerHeight]="35"
-          [limit]="15"
+          [limit]="12"
           [loadingIndicator]="loadingIndicator"
           [scrollbarH]="true"
           class="material">
@@ -27,8 +27,23 @@
               let-selectedCount="selectedCount"
               let-curPage="curPage"
               let-offset="offset">
-              <div style="padding: 5px 10px;">
-                Rows: {{rowCount}} | Attending: {{ attending }} | Not Attending: {{ notAttending }}
+              <div style="width: 100%">
+                <div style="padding: 5px 10px;" class="pull-left">
+                  Rows: {{rowCount}} | Attending: {{ attending }} | Not Attending: {{ notAttending }}
+                </div>
+                <div class="pull-right">
+                  <datatable-pager
+                    [pagerLeftArrowIcon]="'datatable-icon-left'"
+                    [pagerRightArrowIcon]="'datatable-icon-right'"
+                    [pagerPreviousIcon]="'datatable-icon-prev'"
+                    [pagerNextIcon]="'datatable-icon-skip'"
+                    [page]="curPage"
+                    [size]="pageSize"
+                    [count]="rowCount"
+                    [hidden]="!((rowCount / pageSize) > 1)"
+                    (change)="table.onFooterPage($event)">
+                  </datatable-pager>
+                </div>
               </div>
             </ng-template>
           </ngx-datatable-footer>
@@ -110,7 +125,7 @@
             </span>
           <input
             autofocus
-            (blur)="updateValue($event, 'guestsAttending', row)"
+            (blur)="updateValue($event, 'numberOfGuests', row)"
             (keyup.enter)="updateValue($event, 'guestsAttending', row)"
             *ngIf="editing[row.$$index + '-numberOfGuests']"
             type="number"
