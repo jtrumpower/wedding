@@ -63,7 +63,7 @@ export class GuestsComponent implements OnInit {
     const temp = this.temp.filter(function(d) {
       if (d.firstName.toLowerCase().indexOf(val) !== -1 ||
           d.lastName.toLowerCase().indexOf(val) !== -1 ||
-          (d.firstName && d.email.toLowerCase().indexOf(val) !== -1) ||
+          (d.email && d.email.toLowerCase().indexOf(val) !== -1) ||
           d.eventType.toLowerCase().indexOf(val) !== -1 ||
           d.numberOfGuests === +val ||
           (d.dietaryRestriction && d.dietaryRestriction.toLowerCase().indexOf(val) !== -1) ||
