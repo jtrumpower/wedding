@@ -1,3 +1,8 @@
+#fh5co-event .fh5co-heading p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+
 .event-height {
   min-height: 400px;
 }
