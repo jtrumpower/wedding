@@ -12,10 +12,10 @@ import {GuestService} from './guest.service';
     styleUrls: ['../../css/directions.component.css']
 })
 export class DirectionsComponent {
-  lat = 40.827023;
-  lng = -81.378202;
-  zoom = 14;
+  lat = 40.826674;
+  lng = -81.383759;
+  zoom = 17;
   address = `2600 Cleveland Avenue Northwest<br>
   Canton, OH 44709`;
-  location = 'Malone University';
+  location = 'Malone University\'s Johnson Center';
 }
